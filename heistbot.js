@@ -34,7 +34,7 @@ interFace.question("Token? ", (token) => {
         for (var member of message.guild.members.values()) {
           if (member.nickname === nickname || member.user.username === nickname) {
             heist.crew = [];
-            heist.crew.push(member.user);
+            heist.crew.push(member);
             break;
           }
         }
@@ -42,7 +42,7 @@ interFace.question("Token? ", (token) => {
         var nickname = message.content.match(joinRegex)[1];
         for (var member of message.guild.members.values()) {
           if (member.nickname === nickname || member.user.username === nickname) {
-            heist.crew.push(member.user);
+            heist.crew.push(member);
             break;
           }
         }
@@ -54,7 +54,7 @@ interFace.question("Token? ", (token) => {
           var nickname = message.content.match(wonRegex)[i];
           for (var member of message.guild.members.values()) {
             if (typeof nickname === "string" && (member.nickname === nickname.trim() || member.user.username === nickname.trim())) {
-              winners.push(member.user);
+              winners.push(member);
               break;
             }
           }
@@ -63,13 +63,13 @@ interFace.question("Token? ", (token) => {
 
         var response = "";
         for (var i=0; i<heist.crew.length; i++) {
-          response += "<@" + heist.crew[i].id + ">, ";
+          response += (heist.crew[i].nickname || heist.crew[i].user.username) + ", ";
         }
         response = response.substring(0, response.length - 2);
 
         var looters = "";
         for (var i=0; i<winners.length; i++) {
-          looters += "<@" + winners[i].id + ">, ";
+          looters += (winners[i].nickname || winners[i].user.username) + ">, ";
         }
         looters = looters.substring(0, looters.length - 2);
 
@@ -103,7 +103,7 @@ interFace.question("Token? ", (token) => {
       var response = "";
       for (var i=0; i<heist.crew.length; i++) {
         console.log(heist.crew[i]);
-        response += "<@" + heist.crew[i].id + ">, ";
+        response += (heist.crew[i].nickname || heist.crew[i].user.username) + ", ";
       }
       response = response.substring(0, response.length - 2);
       message.edit(response);
