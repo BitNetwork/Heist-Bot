@@ -21,10 +21,11 @@ interFace.question("Token? ", (token) => {
 
   client.on("message", message => {
     if (message.author.id === "194525847565238272") { // Id of BarbBot
+
       var startRegex = /^A heist is being planned by (.*)\nThe heist begin in \d{1,2} seconds\. Type .heist play to join their crew\.$/;
       var joinRegex = /^(.*) has joined the crew\.\nThe crew now has \d{1,2} members\.$/;
       var lonelyRegex = /^You tried to rally a crew, but no one wanted to follow you\. The heist has been cancelled\.$/;
-      var wonRegex = /^The credits stolen from the vault was split among the winners:\n```Criminals +Credits Stolen +Bonuses +Total\n-+ + -+ + -+ + -+\n(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?```/;
+      var wonRegex = /^The credits stolen from the vault was split among the winners:\n```Python\nCriminals +Credits Stolen +Bonuses +Total\n-+ + -+ + -+ + -+\n(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?(?:(.*) +\d+ +\d+ +\d+\n?)?```/;
       var lostRegex = /^No one made it out safe\. The good guys win\.$/;
 
       // Make sure to check user id against the bot. (Also check if on the right server) Don't want actually people triggering this.
@@ -79,8 +80,8 @@ interFace.question("Token? ", (token) => {
 
     }
 
-    var header = message.channel.guild.name + "/" + message.channel.name + ", " + message.author.username + "#" + message.author.discriminator + ": ";
-    console.log(header + message.content.replace(/\n/g, "\n" + " ".repeat(header.length)));
+    //var header = message.channel.guild.name + "/" + message.channel.name + ", " + message.author.username + "#" + message.author.discriminator + ": ";
+    //console.log(header + message.content.replace(/\n/g, "\n" + " ".repeat(header.length)));
 
     // ONLY USER MESSAGES BEYOND THIS POINT
 
